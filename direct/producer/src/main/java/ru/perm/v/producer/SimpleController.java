@@ -1,0 +1,32 @@
+package ru.perm.v.producer;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class SimpleController {
+
+	private static int counter = 0;
+
+	@Autowired
+	RabbitMQProperties rabbitMQProperties;
+
+	Logger logger = LoggerFactory.getLogger(SimpleController.class);
+	@Autowired
+	RabbitTemplate template;
+
+	@RequestMapping("/emit")
+	@ResponseBody
+	String queue1() {
+		String message = "Message " + counter++;
+		logger.info("Seng:" + message);
+		template.convertAndSend(rabbitMQProperties.getExchangeName(),
+				rabbitMQProperties.getRoutingKey(), message);
+		return message;
+	}
+}
