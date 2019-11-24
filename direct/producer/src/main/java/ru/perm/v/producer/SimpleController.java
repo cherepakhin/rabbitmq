@@ -13,10 +13,11 @@ public class SimpleController {
 
 	private static int counter = 0;
 
+	Logger logger = LoggerFactory.getLogger(SimpleController.class);
+
 	@Autowired
 	RabbitMQProperties rabbitMQProperties;
 
-	Logger logger = LoggerFactory.getLogger(SimpleController.class);
 	@Autowired
 	RabbitTemplate template;
 
