@@ -40,8 +40,6 @@ public class RabbitConfiguration {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);
 		container.setQueueNames(rabbitMQProperties.getQueueName());
-//		MyMessageAdapter myMessageAdapter = new MyMessageAdapter();
-//		myMessageAdapter.setMessageConverter(consumerJackson2MessageConverter());
 		container.setMessageListener(myMessageAdapter);
 
 		return container;
