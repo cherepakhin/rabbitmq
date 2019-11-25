@@ -18,11 +18,11 @@ http :8080/emit
 http :8080/emit
 ```
 **3. work-queues** - В данном примере одну очередь слушают уже два листенера. Так можно распараллелить очередь на несколько компьютеров или нод в облаке.
+![Схема](doc/work-queues.png "Схема")
 ```shell script
 Тест: 
 http :8080/emit
 ```
-![Схема](doc/work-queues.png "Схема")
 
 **4. Publish-Subscribe** - Одно и то же сообщение приходит сразу двум консьюмерам.
 
@@ -43,6 +43,7 @@ http :8080/warming
 ```
 
 **6. Topic** - вместо DirectExchange используем TopicExchange.
+
 ![Схема](doc/topic.png "Схема")
 ```shell script
 Тест: 
